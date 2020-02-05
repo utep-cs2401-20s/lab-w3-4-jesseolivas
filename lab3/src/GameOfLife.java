@@ -17,7 +17,14 @@ public class GameOfLife{
     // Constructor taking in a 2D array and copies it into
     // previous
     public GameOfLife(int[][] b) {
-        this.previous = new int[b.length][b.length];
+        size = b.length;
+        previous = new int[size][size];
+        board = new int[size][size];
+        for(int i = 0; i < previous.length; i++){
+            for(int j = 0; j < previous[i].length; j++){
+                previous[i][j] = b[i][j];
+            }
+        }
 
     }
 
