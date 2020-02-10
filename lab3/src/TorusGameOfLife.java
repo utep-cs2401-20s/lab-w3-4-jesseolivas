@@ -12,22 +12,13 @@ public class TorusGameOfLife extends GameOfLife{
     // Constructor taking in the size wanted to be given to the
     // 2D array for both boards
     public TorusGameOfLife(int size) {
-        this.size = size;
-        this.board = new int[size][size];
-        this.previous = new int[size][size];
+        super(size);
     }
 
     // Constructor taking in a 2D array and copies it into
     // previous
     public TorusGameOfLife(int[][] b) {
-        size = b.length;
-        previous = new int[size][size];
-        board = new int[size][size];
-        for(int i = 0; i < previous.length; i++){
-            for(int j = 0; j < previous[i].length; j++){
-                previous[i][j] = b[i][j];
-            }
-        }
+        super(b);
     }
 
     // Returns the current board
@@ -35,7 +26,6 @@ public class TorusGameOfLife extends GameOfLife{
         return board;
     }
 
-    // FIX ME
     // Takes no parameter, void method
     // Transforms the current board into its next shape
     public void oneStep(){
@@ -101,8 +91,10 @@ public class TorusGameOfLife extends GameOfLife{
     // Takes int n, number of evolution steps needed to conduct
     // Transforms the board into the board after n steps of evolution
     // (n successive calls to oneStep)
-    public int[][] evolution(int n){
-        return board;
+    public void evolution(int n){
+        for(int i = 0; i < n; i++){
+            oneStep();
+        }
     }
 
 }

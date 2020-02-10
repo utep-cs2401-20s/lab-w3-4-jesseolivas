@@ -26,6 +26,11 @@ public class GameOfLife{
         size = b.length;
         previous = new int[size][size];
         board = new int[size][size];
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                board[i][j] = b[i][j];
+            }
+        }
         for(int i = 0; i < previous.length; i++){
             for(int j = 0; j < previous[i].length; j++){
                 previous[i][j] = b[i][j];
@@ -38,7 +43,6 @@ public class GameOfLife{
         return board;
     }
 
-    // FIX ME
     // Takes no parameter, void method
     // Transforms the current board into its next shape
     public void oneStep(){
