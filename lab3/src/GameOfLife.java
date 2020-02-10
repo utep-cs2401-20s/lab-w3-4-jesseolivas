@@ -115,7 +115,20 @@ public class GameOfLife{
     }
 
     public void printBoard(){
-
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j< board[i].length; i++){
+                System.out.print(board[i][j]);
+            }
+            System.out.println(" ");
+        }
     }
 
+    public static void main(String[] args) {
+        int[][] test = {{0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0},
+                        {0,0,0,0}};
+        GameOfLife testG = new GameOfLife(test);
+
+    }
 }
