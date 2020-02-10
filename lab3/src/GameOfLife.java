@@ -104,8 +104,10 @@ public class GameOfLife{
     // Takes int n, number of evolution steps needed to conduct
     // Transforms the board into the board after n steps of evolution
     // (n successive calls to oneStep)
-    public int[][] evolution(int n){
-        return board;
+    public void evolution(int n){
+        for(int i = 0; i < n; i++){
+            oneStep();
+        }
     }
 
 }
