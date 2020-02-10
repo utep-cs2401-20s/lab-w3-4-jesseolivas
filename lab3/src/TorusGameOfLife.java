@@ -21,80 +21,39 @@ public class TorusGameOfLife extends GameOfLife{
         super(b);
     }
 
-    // Returns the current board
-    public int[][] getBoard() {
-        return board;
-    }
-
-    // Takes no parameter, void method
-    // Transforms the current board into its next shape
-    public void oneStep(){
-        int[][] current = new int[size][size];
-        for (int i = 0;i < current.length; i++){
-            for(int j = 0; j < current[i].length; j++){
-                current[i][j] = previous[i][j];
-            }
-        }
-        for (int i = 0;i < current.length; i++){
-            for(int j = 0; j < current[i].length; j++){
-                if(current[i][j] == 1) {
-                    if (neighbors(current[i][0], current[0][j]) < 2) {
-                        current[i][j] = 0;
-                    }
-                    else if (neighbors(current[i][0], current[0][j]) > 3) {
-                        current[i][j] = 0;
-                    }
-                }
-                else {
-                    if (neighbors(current[i][0], current[0][j]) == 3) {
-                        current[i][j] = 1;
-                    }
-                }
-            }
-        }
-
-    }
-
     // FIX ME
     // Takes two indices (row and column index)
     // Computes the number of neighbors the corresponding cell on the board has
+    @Override
     public int neighbors(int row, int col){
         int count = 0;
-        if(previous[row-1][col-1] == 1){
+        if(previous[((row-1) + size)% size][((col) + size)% size] == 1){
             count++;
         }
-        if(previous[row-1][col] == 1){
+        if(previous[((row-1) + size)% size][((col-1) + size)% size] == 1){
             count++;
         }
-        if(previous[row-1][col+1] == 1){
+        if(previous[((row-1) + size)% size][((col+1) + size)% size] == 1){
             count++;
         }
-        if(previous[row][col-1] == 1){
+        if(previous[((row) + size)% size][((col-1) + size)% size] == 1){
             count++;
         }
-        if(previous[row][col+1] == 1){
+        if(previous[((row) + size)% size][((col+1) + size)% size] == 1){
             count++;
         }
-        if(previous[row+1][col-1] == 1){
+        if(previous[((row+1) + size)% size][((col-1) + size)% size] == 1){
             count++;
         }
-        if(previous[row+1][col] == 1){
+        if(previous[((row+1) + size)% size][((col) + size)% size] == 1){
             count++;
         }
-        if(previous[row+1][col+1] == 1){
+        if(previous[((row+1) + size)% size][((col+1) + size)% size] == 1){
             count++;
         }
+
         return count;
     }
 
-    // FIX ME
-    // Takes int n, number of evolution steps needed to conduct
-    // Transforms the board into the board after n steps of evolution
-    // (n successive calls to oneStep)
-    public void evolution(int n){
-        for(int i = 0; i < n; i++){
-            oneStep();
-        }
-    }
 
 }

@@ -52,19 +52,19 @@ public class GameOfLife{
                 current[i][j] = previous[i][j];
             }
         }
-        for (int i = 0;i < current.length; i++){
-            for(int j = 0; j < current[i].length; j++){
-                if(current[i][j] == 1) {
-                    if (neighbors(current[i][0], current[0][j]) < 2) {
-                        current[i][j] = 0;
+        for (int i = 0;i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                if(board[i][j] == 1) {
+                    if (neighbors(board[i][0], board[0][j]) < 2) {
+                        board[i][j] = 0;
                     }
-                    else if (neighbors(current[i][0], current[0][j]) > 3) {
-                        current[i][j] = 0;
+                    else if (neighbors(board[i][0], board[0][j]) > 3) {
+                        board[i][j] = 0;
                     }
                 }
                 else {
-                    if (neighbors(current[i][0], current[0][j]) == 3) {
-                        current[i][j] = 1;
+                    if (neighbors(board[i][0], board[0][j]) == 3) {
+                        board[i][j] = 1;
                     }
                 }
             }
@@ -112,6 +112,10 @@ public class GameOfLife{
         for(int i = 0; i < n; i++){
             oneStep();
         }
+    }
+
+    public void printBoard(){
+
     }
 
 }
