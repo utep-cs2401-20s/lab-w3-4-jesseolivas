@@ -46,24 +46,24 @@ public class GameOfLife{
     // Takes no parameter, void method
     // Transforms the current board into its next shape
     public void oneStep(){
-        int[][] current = new int[size][size];
-        for (int i = 0;i < current.length; i++){
-            for(int j = 0; j < current[i].length; j++){
-                current[i][j] = previous[i][j];
+        for (int i = 0;i < size; i++){
+            for(int j = 0; j < size; j++){
+                previous[i][j] = board[i][j];
             }
         }
-        for (int i = 0;i < board.length; i++){
-            for(int j = 0; j < board[i].length; j++){
-                if(board[i][j] == 1) {
-                    if (neighbors(board[i][0], board[0][j]) < 2) {
+
+        for (int i = 0;i < size; i++){
+            for(int j = 0; j < size; j++){
+                if(previous[i][j] == 1) {
+                    if (neighbors(i, j) < 2) {
                         board[i][j] = 0;
                     }
-                    else if (neighbors(board[i][0], board[0][j]) > 3) {
+                    else if (neighbors(i, j) > 3) {
                         board[i][j] = 0;
                     }
                 }
                 else {
-                    if (neighbors(board[i][0], board[0][j]) == 3) {
+                    if (neighbors(i, j) == 3) {
                         board[i][j] = 1;
                     }
                 }
@@ -77,28 +77,28 @@ public class GameOfLife{
     // Computes the number of neighbors the corresponding cell on the board has
     public int neighbors(int row, int col){
         int count = 0;
-        if(previous[row-1][col-1] == 1){
+        if((row > 0) && (col > 0) && previous[row-1][col-1] == 1){
             count++;
         }
-        if(previous[row-1][col] == 1){
+        if((row > 0) && previous[row-1][col] == 1){
             count++;
         }
-        if(previous[row-1][col+1] == 1){
+        if((row > 0) && (col != previous.length-1) && previous[row-1][col+1] == 1){
             count++;
         }
-        if(previous[row][col-1] == 1){
+        if((col > 0) && previous[row][col-1] == 1){
             count++;
         }
-        if(previous[row][col+1] == 1){
+        if((col != previous.length-1) && previous[row][col+1] == 1){
             count++;
         }
-        if(previous[row+1][col-1] == 1){
+        if((row != previous.length-1) && (col > 0) && previous[row+1][col-1] == 1){
             count++;
         }
-        if(previous[row+1][col] == 1){
+        if((row != previous.length-1) && previous[row+1][col] == 1){
             count++;
         }
-        if(previous[row+1][col+1] == 1){
+        if((row != previous.length-1) && (col != previous.length -1) && previous[row+1][col+1] == 1){
             count++;
         }
         return count;
@@ -116,7 +116,7 @@ public class GameOfLife{
 
     public void printBoard(){
         for(int i = 0; i < board.length; i++){
-            for(int j = 0; j< board[i].length; i++){
+            for(int j = 0; j < board[i].length; j++){
                 System.out.print(board[i][j]);
             }
             System.out.println(" ");
@@ -129,6 +129,7 @@ public class GameOfLife{
                         {0,0,0,0},
                         {0,0,0,0}};
         GameOfLife testG = new GameOfLife(test);
+        testG.printBoard();
 
     }
 }
