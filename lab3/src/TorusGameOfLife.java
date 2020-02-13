@@ -25,7 +25,7 @@ public class TorusGameOfLife extends GameOfLife{
     // Takes two indices (row and column index)
     // Computes the number of neighbors the corresponding cell on the board has
     @Override
-    public int neighbors(int row, int col){
+    public int Neighbors(int row, int col){
         int count = 0;
         if(previous[((row-1) + size)% size][((col) + size)% size] == 1){
             count++;

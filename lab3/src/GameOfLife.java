@@ -55,15 +55,15 @@ public class GameOfLife{
         for (int i = 0;i < size; i++){
             for(int j = 0; j < size; j++){
                 if(previous[i][j] == 1) {
-                    if (neighbors(i, j) < 2) {
+                    if (Neighbors(i, j) < 2) {
                         board[i][j] = 0;
                     }
-                    else if (neighbors(i, j) > 3) {
+                    else if (Neighbors(i, j) > 3) {
                         board[i][j] = 0;
                     }
                 }
                 else {
-                    if (neighbors(i, j) == 3) {
+                    if (Neighbors(i, j) == 3) {
                         board[i][j] = 1;
                     }
                 }
@@ -75,7 +75,7 @@ public class GameOfLife{
     // FIX ME
     // Takes two indices (row and column index)
     // Computes the number of neighbors the corresponding cell on the board has
-    public int neighbors(int row, int col){
+    public int Neighbors(int row, int col){
         int count = 0;
         if((row > 0) && (col > 0) && previous[row-1][col-1] == 1){
             count++;
@@ -108,7 +108,7 @@ public class GameOfLife{
     // Takes int n, number of evolution steps needed to conduct
     // Transforms the board into the board after n steps of evolution
     // (n successive calls to oneStep)
-    public void evolution(int n){
+    public void Evolution(int n){
         for(int i = 0; i < n; i++){
             oneStep();
         }
