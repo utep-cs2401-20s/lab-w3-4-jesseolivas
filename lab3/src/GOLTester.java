@@ -9,6 +9,11 @@ import org.junit.jupiter.api.Test;
 //  Any live cell with more than three live neighbours dies, as if by overpopulation.
 //  Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
+// ***********************************************************
+// Test methods that start with G are for GameOfLife.java
+// Test methods that start with T are for TorusGameOfLife.java
+// ***********************************************************
+
 public class GOLTester {
     @Test
     public void GOneStep1(){

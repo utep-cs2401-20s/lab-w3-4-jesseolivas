@@ -46,12 +46,18 @@ public class GameOfLife{
     // Takes no parameter, void method
     // Transforms the current board into its next shape
     public void oneStep(){
+
+        // This loops through the current board and
+        // adds those values to the previous board for any
+        // new changes to be made
         for (int i = 0;i < size; i++){
             for(int j = 0; j < size; j++){
                 previous[i][j] = board[i][j];
             }
         }
 
+        // This loops through the previous board and checks
+        // for dead or alive cells.
         for (int i = 0;i < size; i++){
             for(int j = 0; j < size; j++){
                 if(previous[i][j] == 1) {
@@ -72,11 +78,16 @@ public class GameOfLife{
 
     }
 
-    // FIX ME
     // Takes two indices (row and column index)
     // Computes the number of neighbors the corresponding cell on the board has
     public int Neighbors(int row, int col){
+
+        // Counter to add and return each cell's neighbors
         int count = 0;
+
+        // These if statements check the corresponding cell for
+        // any live cells i.e. "neighbors" and update the count
+        // if boolean is accepted.
         if((row > 0) && (col > 0) && previous[row-1][col-1] == 1){
             count++;
         }
@@ -104,16 +115,20 @@ public class GameOfLife{
         return count;
     }
 
-    // FIX ME
     // Takes int n, number of evolution steps needed to conduct
     // Transforms the board into the board after n steps of evolution
     // (n successive calls to oneStep)
     public void Evolution(int n){
+
+        // When calling Evolution, the process of onestep iterates
+        // n times, so different shapes can be made.
         for(int i = 0; i < n; i++){
             oneStep();
         }
     }
 
+    // This method just iterates through the current board
+    // and prints the contents when called.
     public void printBoard(){
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length; j++){
@@ -123,6 +138,7 @@ public class GameOfLife{
         }
     }
 
+    // Main method to lightly test the program.
     public static void main(String[] args) {
         int[][] test = {{0,0,0,0},
                         {0,0,0,0},
